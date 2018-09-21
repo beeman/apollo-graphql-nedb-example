@@ -1,0 +1,4 @@
+{"name":"Wine","_id":"hEUuXjFdg2cZaLdD"}
+{"name":"Soda","_id":"wljz0hy2K9WoFYIo"}
+{"name":"Beer","_id":"yteuUTKwImHEFAg2"}
+{"$$indexCreated":{"fieldName":"name","unique":true,"sparse":false}}

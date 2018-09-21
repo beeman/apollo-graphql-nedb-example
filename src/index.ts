@@ -1,17 +1,35 @@
 import { GraphQLServer } from 'graphql-yoga'
+import gql from "graphql-tag";
 
-const typeDefs = `
-  type Query {
-    hello(name: String): String
-  }
-`
+import { items } from './db'
+
+const typeDefs = gql`
+    type Item {
+        _id: String!
+        name: String!
+    }
+    type Query {
+        getItems: [Item]!
+        getItem(_id: String!): Item
+    }
+    type Mutation {
+        createItem(name: String!): Item
+        updateItem(_id: String! name: String!): Boolean
+        deleteItem(_id: String!): Boolean
+    }
+`;
+
+const collection = 'items';
 
 const resolvers = {
   Query: {
-    hello: (_, { name }) => {
-      const returnValue = !name ? `Hello ${name || 'World!'}` : null
-      return returnValue
-    }
+    getItems: () => items.find(),
+    getItem: (_, {_id}) => items.findOne(_id)
+  },
+  Mutation: {
+    createItem: (_, {name}) => items.create({name}),
+    updateItem: (_, {_id, name}) => items.update(_id, {name}),
+    deleteItem: (_, {_id}) => items.delete(_id),
   }
 }
 

@@ -12,7 +12,10 @@
   "author": "Devan Beitel",
   "license": "ISC",
   "dependencies": {
-    "graphql-yoga": "1.16.2"
+    "@types/nedb": "^1.8.6",
+    "graphql-tag": "^2.9.2",
+    "graphql-yoga": "1.16.2",
+    "nedb": "^1.8.0"
   },
   "devDependencies": {
     "graphql-cli": "2.16.7",
